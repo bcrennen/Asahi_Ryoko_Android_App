@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".UserLoginActivity">
+
+    <ImageView
+        android:id="@+id/AsahiRyokoLogo"
+        android:layout_width="165dp"
+        android:layout_height="165dp"
+        android:layout_gravity="center"
+        android:layout_marginTop="60dp"
+        android:src="@drawable/unnamed"/>
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/black"
+        android:layout_gravity="center"
+        android:layout_marginTop="20dp"
+        android:layout_marginLeft="40dp"
+        android:layout_marginRight="40dp"
+        android:minHeight="320dp">
+
+        <EditText
+            android:id="@+id/UserEmail"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="50dp"
+            android:height="35dp"
+            android:background="#BCFFA9B1"
+            android:ems="11"
+            android:hint="@string/UserEmail" />
+
+        <EditText
+            android:id="@+id/UserPassword"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:ems="11"
+            android:hint="@string/UserPassword"
+            android:background="#BCFFA9B1"
+            android:layout_gravity="center_horizontal"
+            android:height="35dp"
+            android:layout_marginTop="100dp"
+            android:inputType="textPassword"/>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginTop="190dp"
+            android:orientation="horizontal">
+
+            <Button
+                android:id="@+id/LoginBtn"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="5dp"
+                android:layout_weight="2"
+                android:width="110dp"
+                android:height="35dp"
+                android:backgroundTint="#FF0000"
+                android:textColor="@color/black"
+                android:text="@string/LoginButton" />
+
+            <Button
+                android:id="@+id/RegisterBtn"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="5dp"
+                android:layout_marginRight="10dp"
+                android:layout_weight="2"
+                android:width="110dp"
+                android:height="35dp"
+                android:backgroundTint="#FF0000"
+                android:textColor="@color/black"
+                android:text="@string/RegisterButton" />
+
+        </LinearLayout>
+
+    </FrameLayout>
+
+</LinearLayout>

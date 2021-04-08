@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "766490546760",
+    "project_id": "asahi-ryoko",
+    "storage_bucket": "asahi-ryoko.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:766490546760:android:3ed6edd3e9076795a6be7d",
+        "android_client_info": {
+          "package_name": "ca.bcit.asahiryoko"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "766490546760-u2ridmh9up863v3ruhrjqc803a6a8lub.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyB5vgh_-uIohWT671yeigqLiD_UhDMYJRc"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "766490546760-u2ridmh9up863v3ruhrjqc803a6a8lub.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
