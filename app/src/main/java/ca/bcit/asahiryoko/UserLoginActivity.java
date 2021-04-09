@@ -160,30 +160,16 @@ public class UserLoginActivity extends AppCompatActivity {
      */
     public void create_profile() {
         FirebaseUser currentUser = firebaseAuth.getCurrentUser();
-        StorageReference imageRef = storageRef.child("default_profile.jpg");
         String username = currentUser.getEmail();
         username = username.split("@")[0];
 
         // Create a new user with a username, profile picture and bio
         Map<String, Object> user = new HashMap<>();
         user.put("username", username);
-        user.put("profilePicture", imageRef.getPath());
+        user.put("profilePicture",null );
         user.put("bio", "No current bio");
 
         // Add a new document with a generated ID
-        db.collection("users")
-                .add(user)
-                .addOnSuccessListener(new OnSuccessListener<DocumentReference>() {
-                    @Override
-                    public void onSuccess(DocumentReference documentReference) {
-                        Log.d(TAG, "DocumentSnapshot added with ID: " + documentReference.getId());
-                    }
-                })
-                .addOnFailureListener(new OnFailureListener() {
-                    @Override
-                    public void onFailure(@NonNull Exception e) {
-                        Log.w(TAG, "Error adding document", e);
-                    }
-                });
+        db.collection("users").document(firebaseAuth.getUid()).set(user);
     }
 }
