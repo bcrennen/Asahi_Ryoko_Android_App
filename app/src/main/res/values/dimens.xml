@@ -12,4 +12,7 @@
     inner_frame_layout_padding (below variable) on round screens.
     -->
     <dimen name="inner_frame_layout_padding">5dp</dimen>
+
+    <dimen name="profile_top_margin">60dp</dimen>
+    <dimen name="profile_bottom_margin">20dp</dimen>
 </resources>

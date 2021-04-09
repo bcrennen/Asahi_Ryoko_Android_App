@@ -3,7 +3,7 @@
     <string name="title_activity_user_login">UserLoginActivity</string>
     <string name="hello_world">Hello Square World!</string>
 
-<!--User Login-->
+    <!--User Login-->
     <string name="UserEmail">Email</string>
     <string name="UserPassword">Password</string>
     <string name="LoginButton">Login</string>
