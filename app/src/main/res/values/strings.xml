@@ -8,4 +8,12 @@
     <string name="UserPassword">Password</string>
     <string name="LoginButton">Login</string>
     <string name="RegisterButton">Register</string>
+
+    <string name="name">Name</string>
+    <string name="bio">Bio</string>
+    <string name="EditNameTitle">Enter your name</string>
+    <string name="Cancel">Cancel</string>
+    <string name="Save">Save</string>
+    <string name="EnterHere">Enter here</string>
+
 </resources>

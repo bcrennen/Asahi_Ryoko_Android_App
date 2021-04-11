@@ -6,21 +6,16 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
-import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.ProgressBar;
 import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnCompleteListener;
-import com.google.android.gms.tasks.OnFailureListener;
-import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
-import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
@@ -36,6 +31,8 @@ public class UserLoginActivity extends AppCompatActivity {
     private EditText userPassword;
     private Button loginButton;
     private Button registerButton;
+    private final String DEFAULT_IMAGE = "default_profile.jpg";
+
 
     FirebaseAuth firebaseAuth;
 
@@ -61,13 +58,13 @@ public class UserLoginActivity extends AppCompatActivity {
 
 
 
-//        if (firebaseAuth.getCurrentUser() != null) {
-//            //startActivity(new Intent(getApplicationContext(), MainActivity.class));
-//
-//            // FIXME: For testing, remove this line later.
-//            startActivity(new Intent(getApplicationContext(), ProfileActivity.class));
-//            finish();
-//        }
+        if (firebaseAuth.getCurrentUser() != null) {
+            //startActivity(new Intent(getApplicationContext(), MainActivity.class));
+
+            // FIXME: For testing, remove this line later.
+            startActivity(new Intent(getApplicationContext(), ProfileActivity.class));
+            finish();
+        }
 
         // Register button add listener
         registerButton.setOnClickListener(new View.OnClickListener() {
@@ -166,7 +163,7 @@ public class UserLoginActivity extends AppCompatActivity {
         // Create a new user with a username, profile picture and bio
         Map<String, Object> user = new HashMap<>();
         user.put("username", username);
-        user.put("profilePicture",null );
+        user.put("profilePicture", DEFAULT_IMAGE);
         user.put("bio", "No current bio");
 
         // Add a new document with a generated ID
