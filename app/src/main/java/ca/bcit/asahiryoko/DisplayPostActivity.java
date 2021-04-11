@@ -42,7 +42,11 @@ public class DisplayPostActivity extends AppCompatActivity {
 
         postListView = findViewById(R.id.postDisplayList);
         //TODO: TEMP String Filter, replace with Intent Extra
-        String intentFilter = "Leisure";
+        String intentFilter = null;
+        Bundle extras = getIntent().getExtras();
+        if (extras != null) {
+            intentFilter = extras.getString("Filter");
+        }
 
         ActionBar actionBar = getSupportActionBar();
         actionBar.setTitle(intentFilter);
