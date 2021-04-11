@@ -37,7 +37,13 @@ import com.google.firebase.storage.UploadTask;
 
 import java.io.ByteArrayOutputStream;
 import java.io.File;
-
+/***
+ * This Activity allows users to edit their Name, Bio and profile picture.
+ * Author: Kevin Lee
+ * StudentNo: A01185710
+ * Data April 09, 2021
+ * Version: 1.0
+ */
 public class edit_profile_activity extends AppCompatActivity {
 
     private final String TAG = "edit_profile_activity";
@@ -248,7 +254,7 @@ public class edit_profile_activity extends AppCompatActivity {
                     }
                 });
 
-                //TODO: Write to user data
+
                 db.collection("users").document(firebaseAuth.getUid()).update("profilePicture", storageUID);
 
 

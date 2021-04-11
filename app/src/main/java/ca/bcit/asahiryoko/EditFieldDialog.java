@@ -25,7 +25,14 @@ import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 
 import java.security.InvalidParameterException;
-
+/***
+ * This Class is used to display a dialog when the user wants to
+ * edit their profile. Provides user input to the program.
+ * Author: Kevin Lee
+ * StudentNo: A01185710
+ * Data April 09, 2021
+ * Version: 1.0
+ */
 public class EditFieldDialog extends AppCompatDialogFragment {
     private EditText editTextDialog;
     private TextView currentField;

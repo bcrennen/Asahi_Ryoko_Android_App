@@ -97,7 +97,7 @@ public class UserLoginActivity extends AppCompatActivity {
                             // FIXME: For testing, remove this line later.
                             startActivity(new Intent(getApplicationContext(), ProfileActivity.class));
 
-                            //TODO: Add user to database here
+
                             create_profile();
 
                         } else {
