@@ -133,9 +133,8 @@ public class UserPostActivity extends AppCompatActivity {
     private void uploadFile() {
         if (mImageUri != null) {
             long fileName = System.currentTimeMillis();
-            String nameFile = Long.toString(fileName);
-            StorageReference photoReference = mStorageReference.child(nameFile
-                + "." + getFileExtension(mImageUri));
+            String nameFile = Long.toString(fileName) + "." + getFileExtension(mImageUri);
+            StorageReference photoReference = mStorageReference.child(nameFile);
             uploadTask = photoReference.putFile(mImageUri)
                     .addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
                         @Override
@@ -153,7 +152,7 @@ public class UserPostActivity extends AppCompatActivity {
                             UploadImage uploadImage = new UploadImage(
                                     id,
                                     placeName.getText().toString().trim(),
-                                    nameFile + "",
+                                    nameFile,
                                     placeDescription.getText().toString().trim());
                             mDatabaseReference.child(category.getSelectedItem().toString()).child(id).setValue(uploadImage);
                         }

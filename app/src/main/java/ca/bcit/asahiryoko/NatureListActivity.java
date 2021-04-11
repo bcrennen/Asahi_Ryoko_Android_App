@@ -38,12 +38,12 @@ public class NatureListActivity extends AppCompatActivity {
         mStorageReference = FirebaseStorage.getInstance().getReference("Uploads");
         mDatabaseReference = FirebaseDatabase.getInstance().getReference("UserUploads");
 
-        mDatabaseReference.child("Landmarks").child("-MY-cqJkdp1rGbbuX1C0").get().addOnCompleteListener(new OnCompleteListener<DataSnapshot>() {
+        mDatabaseReference.child("Nature").child("-MY1FvPc8CbkVexp70ww").get().addOnCompleteListener(new OnCompleteListener<DataSnapshot>() {
             @Override
             public void onComplete(@NonNull Task<DataSnapshot> task) {
                 if (task.isSuccessful()) {
                     DataSnapshot document = task.getResult();
-                    StorageReference storageImageLoc = mStorageReference.child("Uploads").child((document.getValue(PostData.class).getImageUrl() + ".jpg"));
+                    StorageReference storageImageLoc = mStorageReference.child((document.getValue(PostData.class).getImageUrl()));
                     storageImageLoc.getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
                         @Override
                         public void onSuccess(Uri uri) {

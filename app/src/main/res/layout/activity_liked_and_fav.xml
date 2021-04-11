@@ -7,6 +7,7 @@
     tools:context=".LikedAndFavActivity">
 
     <ListView
+        android:id="@+id/like_fav_post_list"
         android:layout_width="match_parent"
         android:layout_height="match_parent" />
 </LinearLayout>

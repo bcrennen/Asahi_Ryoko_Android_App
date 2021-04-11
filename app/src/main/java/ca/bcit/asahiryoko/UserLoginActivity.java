@@ -59,10 +59,8 @@ public class UserLoginActivity extends AppCompatActivity {
 
 
         if (firebaseAuth.getCurrentUser() != null) {
-            //startActivity(new Intent(getApplicationContext(), MainActivity.class));
-
-            // FIXME: For testing, remove this line later.
             startActivity(new Intent(getApplicationContext(), MainActivity.class));
+
             finish();
         }
 
@@ -135,10 +133,8 @@ public class UserLoginActivity extends AppCompatActivity {
                     public void onComplete(@NonNull Task<AuthResult> task) {
                         if (task.isSuccessful()) {
                             Toast.makeText(UserLoginActivity.this, "Login successful!", Toast.LENGTH_LONG).show();
-                            //startActivity(new Intent(getApplicationContext(), MainActivity.class));
+                            startActivity(new Intent(getApplicationContext(), MainActivity.class));
 
-                            // FIXME: For testing, remove this line later.
-                            startActivity(new Intent(getApplicationContext(), ProfileActivity.class));
                         } else {
                             Toast.makeText(UserLoginActivity.this, "Error: " + task.getException().getMessage(), Toast.LENGTH_LONG).show();
                         }
