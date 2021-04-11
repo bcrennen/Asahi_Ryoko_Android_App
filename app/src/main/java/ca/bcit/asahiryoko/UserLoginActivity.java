@@ -62,7 +62,7 @@ public class UserLoginActivity extends AppCompatActivity {
             //startActivity(new Intent(getApplicationContext(), MainActivity.class));
 
             // FIXME: For testing, remove this line later.
-            startActivity(new Intent(getApplicationContext(), ProfileActivity.class));
+            startActivity(new Intent(getApplicationContext(), MainActivity.class));
             finish();
         }
 

@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="20dp"
+    tools:context=".UserPostActivity">
+
+    <androidx.appcompat.widget.LinearLayoutCompat
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <Button
+            android:id="@+id/ChoosePhotoButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/ChoosePhotoButton" />
+
+        <Spinner
+            android:id="@+id/Category"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:entries="@array/places_array" />
+
+        <EditText
+            android:id="@+id/PlaceName"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:hint="@string/UserInputPlaceName"
+            android:inputType="textPersonName" />
+
+        <ImageView
+            android:id="@+id/UserPhoto"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:minHeight="400dp" />
+
+        <EditText
+            android:id="@+id/PlaceDescription"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:gravity="top"
+            android:hint="@string/UserInputPlaceDescription"
+            android:inputType="textMultiLine" />
+
+        <ProgressBar
+            android:id="@+id/progressBar"
+            style="@style/Widget.AppCompat.ProgressBar.Horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+
+        <Button
+            android:id="@+id/UploadButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:text="@string/UploadButton" />
+
+        <TextView
+            android:id="@+id/showuploads"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="hello" />
+
+    </androidx.appcompat.widget.LinearLayoutCompat>
+
+</ScrollView>

@@ -10,6 +10,7 @@ import android.widget.ArrayAdapter;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
+import java.util.ArrayList;
 import java.util.List;
 /***
  * This adapter uses a Post object and the database to display
@@ -19,12 +20,12 @@ import java.util.List;
  * Data April 09, 2021
  * Version: 1.0
  */
-public class PostAdapter extends ArrayAdapter<Post> {
-    private ArrayList<Post> postList;
+public class PostAdapter extends ArrayAdapter<PostData> {
+    private ArrayList<PostData> postList;
 
-    public PostAdapter(@NonNull Context context, int resource, @NonNull ArrayList<Post> objects) {
+    public PostAdapter(@NonNull Context context, int resource, @NonNull ArrayList<PostData> objects) {
         super(context, resource);
-        this.postList = (ArrayList<Post>) objects;
+        this.postList = (ArrayList<PostData>) objects;
     }
 
     @NonNull

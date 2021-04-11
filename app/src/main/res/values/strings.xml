@@ -16,4 +16,17 @@
     <string name="Save">Save</string>
     <string name="EnterHere">Enter here</string>
 
+
+    <!--User Post-->
+    <string name="ChoosePhotoButton">Choose Photo</string>
+    <string name="UserInputPlaceName">Place name</string>
+    <string name="UserInputPlaceDescription">Description</string>
+    <string name="UploadButton">Post</string>
+    <string-array name="places_array">
+        <item>Nature</item>
+        <item>Landmarks</item>
+        <item>Food</item>
+        <item>Market Or Shopping</item>
+        <item>Leisure</item>
+    </string-array>
 </resources>
