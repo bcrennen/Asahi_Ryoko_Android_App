@@ -10,11 +10,11 @@
 
     <ImageView
         android:id="@+id/AsahiRyokoLogo"
-        android:layout_width="165dp"
+        android:layout_width="170dp"
         android:layout_height="165dp"
         android:layout_gravity="center"
         android:layout_marginTop="60dp"
-        android:src="@drawable/unnamed"/>
+        android:src="@drawable/asahi_ryoko_logo"/>
 
     <FrameLayout
         android:layout_width="match_parent"

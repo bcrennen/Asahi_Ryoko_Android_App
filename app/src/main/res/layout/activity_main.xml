@@ -5,17 +5,27 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/red"
-    tools:context=".MainActivity">
+    tools:context=".MainActivity"
+    android:orientation="vertical">
 
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="450dp"
-        >
+        android:layout_height="470dp">
+
+        <Button
+            android:id="@+id/LogoutBtn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Logout"
+            android:layout_marginLeft="295dp"
+            android:backgroundTint="#F8A1A1"
+            android:textColor="@color/black"/>
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:orientation="vertical">
+            android:orientation="vertical"
+            android:layout_marginTop="30dp">
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -104,7 +114,7 @@
                 android:id="@+id/food"
                 android:layout_width="125dp"
                 android:layout_height="125dp"
-                android:layout_marginLeft="120dp"
+                android:layout_marginLeft="135dp"
                 android:layout_marginTop="15dp"
                 android:layout_marginRight="125dp"
                 android:background="@color/grey"
@@ -227,5 +237,23 @@
         app:itemBackground="@color/grey"
         app:itemTextColor="@drawable/selector"
         app:menu="@menu/nav_app" />
-    </RelativeLayout>
 
+    <androidx.coordinatorlayout.widget.CoordinatorLayout
+        android:id="@+id/container_layout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <com.google.android.material.floatingactionbutton.FloatingActionButton
+            android:id="@+id/postFloat"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom|right"
+            android:layout_marginRight="15dp"
+            android:layout_marginBottom="70dp"
+            android:src="@drawable/ic_baseline_add_24"
+            app:backgroundTint="#F8A1A1">
+
+        </com.google.android.material.floatingactionbutton.FloatingActionButton>
+
+    </androidx.coordinatorlayout.widget.CoordinatorLayout>
+</RelativeLayout>
