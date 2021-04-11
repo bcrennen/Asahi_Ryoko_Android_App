@@ -46,6 +46,7 @@ public class MainActivity extends AppCompatActivity {
 //            }
 //        });
 
+        // TODO: Reformat
         BottomNavigationView bottomNavigationView = findViewById(R.id.navbar);
 
         bottomNavigationView.setSelectedItemId(R.id.home);
