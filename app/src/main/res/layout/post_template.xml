@@ -22,7 +22,8 @@
             android:id="@+id/post_name"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Place Name" />
+            android:text="Place Name"
+            android:textStyle="bold" />
 
         <TextView
             android:id="@+id/post_desc"
@@ -30,5 +31,7 @@
             android:layout_height="wrap_content"
             android:gravity="center"
             android:text="Description" />
+
     </LinearLayout>
+
 </LinearLayout>

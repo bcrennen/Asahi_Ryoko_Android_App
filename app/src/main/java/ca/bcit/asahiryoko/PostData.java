@@ -7,6 +7,7 @@ public class PostData {
     private String imageUrl;
     private String placeName;
 
+
     public String getDescription() {
         return description;
     }
@@ -31,5 +32,6 @@ public class PostData {
     public String getPlaceName() {
         return placeName;
     }
+    public void setPlaceName(String placeName) {this.placeName = placeName;}
 
 }

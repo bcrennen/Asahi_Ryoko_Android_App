@@ -15,10 +15,11 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.AsahiRyoko">
-        <activity android:name=".LikedAndFavActivity"></activity>
+        <activity android:name=".DisplayPostActivity"></activity>
+        <activity android:name=".LikedAndFavActivity" />
         <activity android:name=".edit_profile_activity" />
         <activity android:name=".ProfileActivity" />
-        <activity android:name=".NatureListActivity"></activity>
+        <activity android:name=".NatureListActivity" />
         <activity android:name=".UserPostActivity" />
         <activity
             android:name=".UserLoginActivity"

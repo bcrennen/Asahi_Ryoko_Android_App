@@ -39,7 +39,9 @@ public class LikedAndFavActivity extends AppCompatActivity {
      */
     private FirebaseFirestore db = FirebaseFirestore.getInstance();
 
-    /** Create a Cloud Storage reference from the app */
+    /**
+     * Create a Cloud Storage reference from the app
+     */
     StorageReference mStorageReference = FirebaseStorage.getInstance().getReference("Uploads");
 
     /**
@@ -47,7 +49,9 @@ public class LikedAndFavActivity extends AppCompatActivity {
      */
     FirebaseAuth firebaseAuth = FirebaseAuth.getInstance();
 
-    /** Get a reference to the real time database */
+    /**
+     * Get a reference to the real time database
+     */
     private DatabaseReference mDatabaseReference = FirebaseDatabase.getInstance().getReference("UserUploads");
 
     @Override
@@ -80,12 +84,12 @@ public class LikedAndFavActivity extends AppCompatActivity {
                             //Picasso.with(NatureListActivity.this).load(uri).into(testPhotoView);
                         }
                     });
-                }
-                else {
+                } else {
                     Log.d("firebase", String.valueOf(task.getResult().getValue()));
                 }
             }
         });
-
+        // Remove Later
+        return new ArrayList<PostData>();
     }
 }
