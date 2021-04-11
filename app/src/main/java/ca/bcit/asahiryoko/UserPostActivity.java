@@ -41,7 +41,6 @@ public class UserPostActivity extends AppCompatActivity {
     private EditText placeDescription;
     private ProgressBar progressBar;
     private Button uploadBtn;
-    private TextView showUploads;
 
     private Uri mImageUri;
 
@@ -62,7 +61,6 @@ public class UserPostActivity extends AppCompatActivity {
         placeDescription = findViewById(R.id.PlaceDescription);
         progressBar = findViewById(R.id.progressBar);
         uploadBtn = findViewById(R.id.UploadButton);
-        showUploads = findViewById(R.id.showuploads);
 
         // will store the image in the folder called Uploads
         mStorageReference = FirebaseStorage.getInstance().getReference("Uploads");
@@ -94,13 +92,6 @@ public class UserPostActivity extends AppCompatActivity {
                 } else {
                     uploadFile();
                 }
-            }
-        });
-
-        showUploads.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-
             }
         });
     }
@@ -155,6 +146,7 @@ public class UserPostActivity extends AppCompatActivity {
                                     nameFile,
                                     placeDescription.getText().toString().trim());
                             mDatabaseReference.child(category.getSelectedItem().toString()).child(id).setValue(uploadImage);
+                            finish();
                         }
                     })
                     .addOnFailureListener(new OnFailureListener() {
