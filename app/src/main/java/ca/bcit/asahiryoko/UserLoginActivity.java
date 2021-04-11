@@ -162,6 +162,7 @@ public class UserLoginActivity extends AppCompatActivity {
         user.put("username", username);
         user.put("profilePicture", DEFAULT_IMAGE);
         user.put("bio", "No current bio");
+        user.put("liked_posts", new String[]{});
 
         // Add a new document with a generated ID
         db.collection("users").document(firebaseAuth.getUid()).set(user);
