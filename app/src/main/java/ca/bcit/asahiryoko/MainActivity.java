@@ -46,7 +46,7 @@ public class MainActivity extends AppCompatActivity {
 
                     case R.id.search:
                         startActivity(new Intent(getApplicationContext(),
-                                Search.class));
+                                NewSearchActivity.class));
                         overridePendingTransition(0,0);
                         return true;
 
