@@ -37,7 +37,9 @@ public class MainActivity extends AppCompatActivity {
         logoutButton = findViewById(R.id.LogoutBtn);
 
         postFab = findViewById(R.id.postFloat);
-
+	/***
+	References - https://developer.android.com/guide/topics/ui/controls/button			    				    https://www.youtube.com/watch?v=JjfSjMs0ImQ	
+	*/
         BottomNavigationView bottomNavigationView = findViewById(R.id.navbar);
         bottomNavigationView.setSelectedItemId(R.id.home);
         bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {

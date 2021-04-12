@@ -13,6 +13,11 @@ public class model
     {
 
     }
+	/***
+	References - https://www.gkmit.co/blog/mobile-development/how-to-use-model-class-in-android
+			 https://developer.android.com/training/search/setup
+			 https://www.youtube.com/watch?v=PmqYd-AdmC0
+	*/
     public model(String name, String purl) {
         this.name = name;
         this.purl = purl;

@@ -39,7 +39,11 @@ public class NewSearchActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_new_search);
-
+	/***
+	References - https://developer.android.com/training/basics
+			 https://developer.android.com/training/search/setup
+			 https://www.youtube.com/watch?v=sZ8D1-hNeWo
+	*/
         databaseReference = FirebaseDatabase.getInstance().getReference("UserUploads");
 
         BottomNavigationView bottomNavigationView = findViewById(R.id.navbar);
