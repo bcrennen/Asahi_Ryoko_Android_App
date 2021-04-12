@@ -23,6 +23,14 @@ import com.google.firebase.storage.StorageReference;
 import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
+/**
+ * This class is to post each individual category we have
+ * and read the data from different child.
+ *
+ * Author: Brennen Chiu & Kevin Lee
+ * Date: April 11th 2021
+ * Version: 1.0
+ * */
 
 public class DisplayPostActivity extends AppCompatActivity {
 
@@ -41,7 +49,8 @@ public class DisplayPostActivity extends AppCompatActivity {
         setContentView(R.layout.activity_display_post);
 
         postListView = findViewById(R.id.postDisplayList);
-        //TODO: TEMP String Filter, replace with Intent Extra
+
+        // created the key word for getting each individual intent
         String intentFilter = null;
         Bundle extras = getIntent().getExtras();
         if (extras != null) {
@@ -64,6 +73,11 @@ public class DisplayPostActivity extends AppCompatActivity {
 
     }
 
+    /**
+     * This method is to get the data from data from firebase and paste it into
+     * a listview
+     *
+     */
     private void getPostFromDB(String filter, GetPostArrayData post_data) {
         // Get a list of Post from one of the selected options.
         DatabaseReference filterDBRef = mDatabaseReference.child(filter);

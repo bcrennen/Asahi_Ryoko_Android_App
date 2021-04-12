@@ -29,8 +29,6 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-
-
         logoutButton = findViewById(R.id.LogoutBtn);
 
         postFab = findViewById(R.id.postFloat);
@@ -61,7 +59,6 @@ public class MainActivity extends AppCompatActivity {
                                 ProfileActivity.class));
                         overridePendingTransition(0,0);
                         return true;
-
                 }
                 return false;
             }

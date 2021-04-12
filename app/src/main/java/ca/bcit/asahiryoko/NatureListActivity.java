@@ -20,7 +20,13 @@ import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 import com.squareup.picasso.Picasso;
 
-
+/**
+ * This is a testing class for reading the data.
+ *
+ * Author: Brennen Chiu
+ * Date: April 11th 2021
+ * Version: 1.0
+ * */
 public class NatureListActivity extends AppCompatActivity {
 
     private ImageView testPhotoView;

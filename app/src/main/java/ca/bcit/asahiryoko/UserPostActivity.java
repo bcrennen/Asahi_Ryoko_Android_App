@@ -36,6 +36,8 @@ import com.squareup.picasso.Picasso;
  * Author: Brennen Chiu
  * Date: April 10, 2021
  * Version: 1.0
+ * Sources: https://firebase.google.com/docs/storage/web/upload-files
+ *
  */
 public class UserPostActivity extends AppCompatActivity {
 

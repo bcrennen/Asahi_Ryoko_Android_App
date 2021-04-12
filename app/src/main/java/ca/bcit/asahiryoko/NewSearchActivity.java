@@ -21,7 +21,13 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.Query;
 import com.google.firebase.firestore.auth.User;
-
+/**
+ * This class is to search for user post from database.
+ *
+ * Author: Brennen Chiu
+ * Date: April 11th 2021
+ * Version: 1.0
+ * */
 public class NewSearchActivity extends AppCompatActivity {
 
     private EditText searchBar;
