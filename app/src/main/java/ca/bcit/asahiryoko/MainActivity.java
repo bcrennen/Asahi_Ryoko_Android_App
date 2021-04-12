@@ -29,7 +29,7 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        // TODO: Reformat
+
         BottomNavigationView bottomNavigationView = findViewById(R.id.navbar);
 
         logoutButton = findViewById(R.id.LogoutBtn);
@@ -45,8 +45,8 @@ public class MainActivity extends AppCompatActivity {
                         return true;
 
                     case R.id.search:
-//                        startActivity(new Intent(getApplicationContext(),
-//                                Search.class));
+                        startActivity(new Intent(getApplicationContext(),
+                                NewSearchActivity.class));
                         overridePendingTransition(0,0);
                         return true;
 

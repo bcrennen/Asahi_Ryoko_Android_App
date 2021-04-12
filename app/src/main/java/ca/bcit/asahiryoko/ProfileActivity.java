@@ -10,6 +10,7 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.util.Log;
 
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageButton;
 import android.widget.ImageView;
@@ -21,6 +22,8 @@ import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
+import com.google.android.material.bottomnavigation.BottomNavigationView;
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.DocumentSnapshot;
@@ -62,6 +65,8 @@ public class ProfileActivity extends AppCompatActivity {
      */
     FirebaseAuth firebaseAuth = FirebaseAuth.getInstance();
 
+    private FloatingActionButton postFab;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         ActionBar actionBar = getSupportActionBar();
@@ -74,6 +79,43 @@ public class ProfileActivity extends AppCompatActivity {
         username = findViewById(R.id.profile_Name);
         bio = findViewById(R.id.profile_Bio);
         editProfileButton = findViewById(R.id.profileEditButton);
+
+
+        // Set up Nav bar
+        BottomNavigationView bottomNavigationView = findViewById(R.id.navbar);
+
+        postFab = findViewById(R.id.postFloat);
+        bottomNavigationView.setSelectedItemId(R.id.home);
+
+        bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
+            @Override
+            public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+                switch (item.getItemId()){
+                    case R.id.home:
+                        startActivity(new Intent(getApplicationContext(),
+                                MainActivity.class));
+                        overridePendingTransition(0,0);
+
+                    case R.id.search:
+                        startActivity(new Intent(getApplicationContext(),
+                                NewSearchActivity.class));
+                        overridePendingTransition(0,0);
+                        return true;
+
+                    case R.id.like:
+                        startActivity(new Intent(getApplicationContext(),
+                                LikedAndFavActivity.class));
+                        overridePendingTransition(0,0);
+                        return true;
+
+                    case R.id.profile:
+                        return true;
+
+                }
+                return false;
+            }
+
+        });
 
         editProfileButton.setOnClickListener(new View.OnClickListener() {
             @Override

@@ -29,4 +29,9 @@
         <item>Market Or Shopping</item>
         <item>Leisure</item>
     </string-array>
+
+    <!--Search Activity-->
+    <string name="Search">Search Places Name</string>
+    <string name="PlaceName">Place name</string>
+    <string name="SearchDescription">Description</string>
 </resources>
