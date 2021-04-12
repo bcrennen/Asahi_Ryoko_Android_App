@@ -19,6 +19,7 @@ import android.widget.TextView;
 import com.bumptech.glide.Glide;
 import com.firebase.ui.database.FirebaseRecyclerAdapter;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.Query;
@@ -30,6 +31,7 @@ public class NewSearchActivity extends AppCompatActivity {
     private ImageButton searchBtn;
     private RecyclerView resultView;
     private DatabaseReference databaseReference;
+    private FloatingActionButton postFab;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -40,6 +42,7 @@ public class NewSearchActivity extends AppCompatActivity {
 
         BottomNavigationView bottomNavigationView = findViewById(R.id.navbar);
 
+        postFab = findViewById(R.id.postFloat);
         searchBar = findViewById(R.id.searchBar);
         searchBtn = findViewById(R.id.searchButton);
         resultView = findViewById(R.id.resultList);
@@ -78,10 +81,12 @@ public class NewSearchActivity extends AppCompatActivity {
             }
 
         });
-        
-        searchBtn.setOnClickListener(new View.OnClickListener() {
+
+        postFab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                Intent postActivityIntent = new Intent(NewSearchActivity.this, UserPostActivity.class);
+                startActivity(postActivityIntent);
             }
         });
 
