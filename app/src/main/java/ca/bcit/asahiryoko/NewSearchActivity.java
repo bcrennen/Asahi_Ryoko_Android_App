@@ -21,7 +21,13 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.Query;
 import com.google.firebase.firestore.auth.User;
-
+/***
+ * This Activity allows users to search the database for places and data
+ * Author: Saksham Bhardwaj
+ * StudentNo: A01185352
+ * Data April 09, 2021
+ * Version: 1.0
+ */
 public class NewSearchActivity extends AppCompatActivity {
 
     private EditText searchBar;
