@@ -8,6 +8,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.ImageView;
+import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -21,13 +22,16 @@ import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.DocumentSnapshot;
+import com.google.firebase.firestore.FieldValue;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+
 /***
  * This adapter uses a Post object and the database to display
  * information to the list view.
@@ -36,7 +40,7 @@ import java.util.List;
  * Data April 09, 2021
  * Version: 1.0
  */
-public class PostAdapter extends ArrayAdapter<PostData> {
+public class LikePostAdapter extends ArrayAdapter<PostData> {
     private final String TAG = "PostAdapter";
     private final String LIKED_POSTS = "liked_posts";
     private ArrayList<PostData> postList;
@@ -58,7 +62,7 @@ public class PostAdapter extends ArrayAdapter<PostData> {
      */
     private FirebaseFirestore db = FirebaseFirestore.getInstance();
 
-    public PostAdapter(@NonNull Context context, int resource, @NonNull ArrayList<PostData> objects) {
+    public LikePostAdapter(@NonNull Context context, int resource, @NonNull ArrayList<PostData> objects) {
         super(context, resource, objects);
         this.postList = objects;
         this.context = context;
@@ -69,14 +73,14 @@ public class PostAdapter extends ArrayAdapter<PostData> {
     public View getView(int position, @Nullable View convertView, @NonNull ViewGroup parent) {
 
         if (convertView == null) {
-            convertView = LayoutInflater.from(getContext()).inflate(R.layout.post_template, parent, false);
+            convertView = LayoutInflater.from(getContext()).inflate(R.layout.like_template, parent, false);
         }
 
 
         TextView postName = convertView.findViewById(R.id.post_name);
         TextView postDesc = convertView.findViewById(R.id.post_desc);
         ImageView postPic = convertView.findViewById(R.id.post_pic);
-        ImageView saveButton = convertView.findViewById(R.id.removeFavPost);
+        ImageView deleteButton = convertView.findViewById(R.id.removeFavPost);
 
         postName.setText(postList.get(position).getPlaceName());
         postDesc.setText(postList.get(position).getDescription());
@@ -88,6 +92,7 @@ public class PostAdapter extends ArrayAdapter<PostData> {
             @Override
             public void onSuccess(Uri uri) {
                 Picasso.with(context).load(uri).into(postPic);
+
             }
         });
 
@@ -97,26 +102,24 @@ public class PostAdapter extends ArrayAdapter<PostData> {
          * Will be used when the user checks out their like/favorite.
          * Saves the UID and the category.
          */
-        saveButton.setOnClickListener(new View.OnClickListener() {
+        deleteButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
 
-                updateDatabase(postList.get(position));
-                saveButton.setImageResource(R.drawable.liked);
+                deleteItemFromDatabase(postList.get(position).getId());
+
+
 
             }
         });
 
-
-
-
         return convertView;
     }
 
-    private void updateDatabase(PostData post_id) {
+    private void deleteItemFromDatabase(String post_id) {
         // Get current user's data
         DocumentReference docRef = db.collection("users").document(firebaseAuth.getCurrentUser().getUid());
-        ArrayList<Object> newLiked_Posts = new ArrayList<>();
+        ArrayList<PostData> newLiked_Posts = new ArrayList<>();
 
         // Get the current list of like / fav
         docRef.get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
@@ -130,28 +133,31 @@ public class PostAdapter extends ArrayAdapter<PostData> {
                     // Begin reading data from firebase and trying to get the current like / fav list.
                     try {
 
-                        newLiked_Posts.add(post_id);
-                        for( Object item : (List<Object>) document.get(LIKED_POSTS)) {
-                            newLiked_Posts.add(item);
+                        for( HashMap item : (List<HashMap>) document.get(LIKED_POSTS)) {
+
+                            newLiked_Posts.add( new PostData(item.get("description").toString(), item.get("id").toString(),
+                                    item.get("imageUrl").toString(), item.get("placeName").toString()) );
                         }
 
-                        // Update the current list.
-                        docRef.update(LIKED_POSTS, newLiked_Posts)
-                                .addOnSuccessListener(new OnSuccessListener<Void>() {
-                                    @Override
-                                    public void onSuccess(Void aVoid) {
-                                        Log.d(TAG, "Database successfully updated.");
-                                        Toast.makeText(context,  "The Post has been saved to your Likes / Favorite", Toast.LENGTH_SHORT).show();
+                        // Find and delete the View from the array list.
+                        for (PostData post : newLiked_Posts) {
+                            if (post.getId().equals(post_id)) {
+                                newLiked_Posts.remove(newLiked_Posts.indexOf(post));
+                                // Update the current list.
+                                docRef.update(LIKED_POSTS, newLiked_Posts)
+                                        .addOnSuccessListener(new OnSuccessListener<Void>() {
+                                            @Override
+                                            public void onSuccess(Void aVoid) {
+                                                Log.d(TAG, "Database successfully updated.");
+                                                Toast.makeText(context,  "The Post has been deleted.", Toast.LENGTH_SHORT).show();
 
 
-                                    }
-                                })
-                                .addOnFailureListener(new OnFailureListener() {
-                                    @Override
-                                    public void onFailure(@NonNull Exception e) {
-                                        Log.w(TAG, "Error updating document", e);
-                                    }
-                                });
+                                            }
+                                        });
+
+                            }
+                        }
+
 
                     } catch(Exception e) {
                         Log.d(TAG, "Something went wrong when reading from the database.");
@@ -162,6 +168,8 @@ public class PostAdapter extends ArrayAdapter<PostData> {
                 }
             }
         });
+
+
 
     }
 }

@@ -43,6 +43,6 @@
         android:layout_height="30dp"
         android:layout_gravity="center_vertical"
         android:clickable="true"
-        app:srcCompat="@drawable/like" />
+        app:srcCompat="@android:drawable/ic_menu_close_clear_cancel" />
 
 </LinearLayout>

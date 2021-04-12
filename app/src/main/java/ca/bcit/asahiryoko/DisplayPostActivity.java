@@ -63,11 +63,7 @@ public class DisplayPostActivity extends AppCompatActivity {
         });
 
 
-
-
-
     }
-
 
     private void getPostFromDB(String filter, GetPostArrayData post_data) {
         // Get a list of Post from one of the selected options.

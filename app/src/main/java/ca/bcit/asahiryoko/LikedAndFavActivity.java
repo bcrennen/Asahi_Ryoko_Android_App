@@ -16,12 +16,17 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.firestore.DocumentReference;
+import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.HashMap;
+import java.util.List;
 
 /***
  * This Activity is used to display the user's favorite post.
@@ -33,6 +38,7 @@ import java.util.ArrayList;
 public class LikedAndFavActivity extends AppCompatActivity {
 
     private ListView listview;
+    private final String LIKED_POSTS = "liked_posts";
 
     /**
      * Get an instance of the Cloud Firestore.
@@ -63,33 +69,45 @@ public class LikedAndFavActivity extends AppCompatActivity {
 
         listview = findViewById(R.id.like_fav_post_list);
 
-        //TODO: Get a list of Post from the database.
-        //PostAdapter postAdapter = new PostAdapter();
-        //listview.setAdapter(PostAdapter);
-    }
 
-    private ArrayList<PostData> getPostFromDatabase() {
-        /** TEST: Gets data with filter, this class doesn't need filter.
-         * This class gets data from user data. */
-
-        mDatabaseReference.child("Leisure").get().addOnCompleteListener(new OnCompleteListener<DataSnapshot>() {
+        getLikedPostFromDatabase(new GetPostArrayData() {
             @Override
-            public void onComplete(@NonNull Task<DataSnapshot> task) {
-                if (task.isSuccessful()) {
-                    DataSnapshot document = task.getResult();
-                    StorageReference storageImageLoc = mStorageReference.child((document.getValue(PostData.class).getImageUrl()));
-                    storageImageLoc.getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
-                        @Override
-                        public void onSuccess(Uri uri) {
-                            //Picasso.with(NatureListActivity.this).load(uri).into(testPhotoView);
-                        }
-                    });
-                } else {
-                    Log.d("firebase", String.valueOf(task.getResult().getValue()));
-                }
+            public void dataLoaded(ArrayList<PostData> postDataList) {
+                LikePostAdapter adapter = new LikePostAdapter(LikedAndFavActivity.this, android.R.layout.simple_list_item_1, postDataList);
+                listview.setAdapter(adapter);
             }
         });
-        // Remove Later
-        return new ArrayList<PostData>();
+    }
+
+    private void getLikedPostFromDatabase(GetPostArrayData post_data) {
+
+        DocumentReference currentUserDB = db.collection("users").document(firebaseAuth.getUid());
+        ArrayList<PostData> currentLiked = new ArrayList<>();
+
+        // Get a list of currently liked Posts.
+        currentUserDB.get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
+              @Override
+              public void onComplete(@NonNull Task<DocumentSnapshot> task) {
+                  DocumentSnapshot document = task.getResult();
+
+                  for( HashMap item : (List<HashMap>) document.get(LIKED_POSTS)) {
+
+                      currentLiked.add( new PostData(item.get("description").toString(), item.get("id").toString(),
+                              item.get("imageUrl").toString(), item.get("placeName").toString()) );
+                  }
+
+                  post_data.dataLoaded(currentLiked);
+
+              }
+        });
+
+
+
+
+
+    }
+
+    public interface GetPostArrayData {
+        void dataLoaded(ArrayList<PostData> postDataList);
     }
 }

@@ -257,6 +257,8 @@ public class edit_profile_activity extends AppCompatActivity {
 
                 db.collection("users").document(firebaseAuth.getUid()).update("profilePicture", storageUID);
 
+                profilePic.setImageURI(selectedImage);
+
 
         }
     }

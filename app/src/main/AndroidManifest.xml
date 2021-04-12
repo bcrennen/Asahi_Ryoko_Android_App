@@ -16,7 +16,6 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.AsahiRyoko">
         <activity android:name=".LikedAndFavActivity"></activity>
-        <activity android:name=".Search"></activity>
         <activity android:name=".DisplayPostActivity"></activity>
         <activity android:name=".edit_profile_activity" />
         <activity android:name=".ProfileActivity" />

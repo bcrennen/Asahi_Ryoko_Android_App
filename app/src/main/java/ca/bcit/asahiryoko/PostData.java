@@ -7,6 +7,16 @@ public class PostData {
     private String imageUrl;
     private String placeName;
 
+    public PostData() {
+    }
+
+    public PostData(String description, String id, String imageUrl, String placeName) {
+        this.description = description;
+        this.id = id;
+        this.imageUrl = imageUrl;
+        this.placeName = placeName;
+
+    }
 
     public String getDescription() {
         return description;
