@@ -51,7 +51,6 @@ public class DisplayPostActivity extends AppCompatActivity {
         ActionBar actionBar = getSupportActionBar();
         actionBar.setTitle(intentFilter);
 
-
         getPostFromDB(intentFilter, new GetPostArrayData() {
 
             @Override
@@ -61,11 +60,6 @@ public class DisplayPostActivity extends AppCompatActivity {
                 postListView.setAdapter(adapter);
             }
         });
-
-
-
-
-
     }
 
 
@@ -78,9 +72,7 @@ public class DisplayPostActivity extends AppCompatActivity {
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 for(DataSnapshot datasnapshot : snapshot.getChildren()) {
                     postDataList.add(datasnapshot.getValue(PostData.class));
-
                 }
-
                 post_data.dataLoaded(postDataList);
             }
 

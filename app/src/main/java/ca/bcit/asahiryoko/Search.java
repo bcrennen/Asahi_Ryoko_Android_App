@@ -25,6 +25,7 @@ public class Search extends AppCompatActivity {
 
     RecyclerView recview;
     myadapter adapter;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -36,7 +37,7 @@ public class Search extends AppCompatActivity {
 
         FirebaseRecyclerOptions<model> options =
                 new FirebaseRecyclerOptions.Builder<model>()
-                        .setQuery(FirebaseDatabase.getInstance().getReference().child("PLACES"), model.class)
+                        .setQuery(FirebaseDatabase.getInstance().getReference("UserUploads"), model.class)
                         .build();
 
         adapter=new myadapter(options);
@@ -61,9 +62,9 @@ public class Search extends AppCompatActivity {
     {
         getMenuInflater().inflate(R.menu.searchmenu,menu);
 
-        MenuItem item=menu.findItem(R.id.search);
+        MenuItem item = menu.findItem(R.id.search);
 
-        SearchView searchView=(SearchView)item.getActionView();
+        SearchView searchView = (SearchView)item.getActionView();
 
         searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
             @Override
@@ -86,7 +87,7 @@ public class Search extends AppCompatActivity {
     {
         FirebaseRecyclerOptions<model> options =
                 new FirebaseRecyclerOptions.Builder<model>()
-                        .setQuery(FirebaseDatabase.getInstance().getReference().child("places").orderByChild("type").startAt(s).endAt(s+"\uf8ff"), model.class)
+                        .setQuery(FirebaseDatabase.getInstance().getReference("UserUploads").startAt(s).endAt(s + "\uf8ff"), model.class)
                         .build();
 
         adapter=new myadapter(options);
