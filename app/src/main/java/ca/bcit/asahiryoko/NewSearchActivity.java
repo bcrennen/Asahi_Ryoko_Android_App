@@ -53,12 +53,12 @@ public class NewSearchActivity extends AppCompatActivity {
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
                 switch (item.getItemId()){
                     case R.id.home:
+                        startActivity(new Intent(getApplicationContext(),
+                                MainActivity.class));
+                        overridePendingTransition(0,0);
                         return true;
 
                     case R.id.search:
-                        startActivity(new Intent(getApplicationContext(),
-                                NewSearchActivity.class));
-                        overridePendingTransition(0,0);
                         return true;
 
                     case R.id.like:
