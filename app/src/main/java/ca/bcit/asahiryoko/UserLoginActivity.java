@@ -23,7 +23,12 @@ import com.google.firebase.storage.StorageReference;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
-
+/***
+ * This class is to let user to login and setting their authentication.
+ * Author: Brennen Chiu
+ * Date: April 08, 2021
+ * Version: 1.0
+ */
 public class UserLoginActivity extends AppCompatActivity {
 
     /** Used in logging messages and debugging */

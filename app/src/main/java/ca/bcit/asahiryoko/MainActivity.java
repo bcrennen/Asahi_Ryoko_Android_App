@@ -125,6 +125,13 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+        /***
+         * This button is to take the user to post activity to post their experiences.
+         *
+         * Author: Brennen Chiu
+         * Date: April 11, 2021
+         * Version: 1.0
+         */
         postFab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

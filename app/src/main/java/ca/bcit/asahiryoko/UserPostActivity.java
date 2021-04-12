@@ -29,7 +29,14 @@ import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.StorageTask;
 import com.google.firebase.storage.UploadTask;
 import com.squareup.picasso.Picasso;
-
+/***
+ * This class is allow user to post their their experience
+ * with a certain place they visited.
+ *
+ * Author: Brennen Chiu
+ * Date: April 10, 2021
+ * Version: 1.0
+ */
 public class UserPostActivity extends AppCompatActivity {
 
     private static final int PICK_Image_REQUEST = 1;
@@ -77,6 +84,7 @@ public class UserPostActivity extends AppCompatActivity {
         }
         mDatabaseReference = FirebaseDatabase.getInstance().getReference("UserUploads");
 
+        // when user click on choose button it will open a file location for them to upload.
         choosePhotoBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -84,6 +92,7 @@ public class UserPostActivity extends AppCompatActivity {
             }
         });
 
+        // this button serves as button for user to upload into database.
         uploadBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -96,6 +105,13 @@ public class UserPostActivity extends AppCompatActivity {
         });
     }
 
+    /***
+     * This method here is to create a file opener for the user.
+     *
+     * Author: Brennen Chiu
+     * Date: April 10, 2021
+     * Version: 1.0
+     */
     private void openFileChooser() {
         Intent intent = new Intent();
         intent.setType("image/*");
@@ -103,6 +119,14 @@ public class UserPostActivity extends AppCompatActivity {
         startActivityForResult(intent, PICK_Image_REQUEST);
     }
 
+    /***
+     * This method here is to upload the data of the image to firebase and then
+     * put it in the box where post is.
+     *
+     * Author: Brennen Chiu
+     * Date: April 10, 2021
+     * Version: 1.0
+     */
     @Override
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
@@ -115,12 +139,27 @@ public class UserPostActivity extends AppCompatActivity {
         }
     }
 
+    /***
+     * This method here is to get the file extension from the file that it is uploaded.
+     *
+     * Author: Brennen Chiu
+     * Date: April 10, 2021
+     * Version: 1.0
+     */
     private String getFileExtension(Uri uri) {
         ContentResolver contentResolver = getContentResolver();
         MimeTypeMap mimeTypeMap = MimeTypeMap.getSingleton();
         return mimeTypeMap.getExtensionFromMimeType(contentResolver.getType(uri));
     }
 
+    /***
+     * This method is to upload the file and data that the user has input into
+     * firebase database.
+     *
+     * Author: Brennen Chiu
+     * Date: April 10, 2021
+     * Version: 1.0
+     */
     private void uploadFile() {
         if (mImageUri != null) {
             long fileName = System.currentTimeMillis();

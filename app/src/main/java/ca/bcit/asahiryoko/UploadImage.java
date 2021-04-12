@@ -1,5 +1,11 @@
 package ca.bcit.asahiryoko;
-
+/***
+ * This is a class for getting the data from firebase.
+ *
+ * Author: Brennen Chiu
+ * Date: April 10, 2021
+ * Version: 1.0
+ */
 public class UploadImage {
     private String id;
     private String placeName;
