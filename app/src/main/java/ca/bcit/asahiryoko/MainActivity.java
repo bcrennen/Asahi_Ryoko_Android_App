@@ -14,7 +14,12 @@ import android.widget.RelativeLayout;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.firebase.auth.FirebaseAuth;
-
+/***
+ * This Activity initiates the app and is the Main activity/Homepage.
+ * Author: Kevin Lee, Saksham Bhardwaj, Brennen Chiu
+ * Data April 09, 2021
+ * Version: 1.0
+ */
 public class MainActivity extends AppCompatActivity {
 
     private Button logoutButton;

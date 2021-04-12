@@ -213,6 +213,7 @@ public class edit_profile_activity extends AppCompatActivity {
         photoPickerIntent.setType("image/*");
         startActivityForResult(photoPickerIntent, RESULT_LOAD_IMAGE);
 
+
     }
 
     @Override

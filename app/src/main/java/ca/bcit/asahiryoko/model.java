@@ -1,5 +1,11 @@
 package ca.bcit.asahiryoko;
-
+/***
+ * This Activity makes a model list of a signlelistview format.
+ * Author: Saksham Bhardwaj
+ * StudentNo: A01185352
+ * Data April 09, 2021
+ * Version: 1.0
+ */
 public class model
 {
   String name,purl;
