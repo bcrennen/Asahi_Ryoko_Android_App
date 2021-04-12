@@ -37,7 +37,7 @@ import com.squareup.picasso.Picasso;
  * Date: April 10, 2021
  * Version: 1.0
  * Sources: https://firebase.google.com/docs/storage/web/upload-files
- *
+ * Sources: https://www.youtube.com/watch?v=CQ5qcJetYAI&ab_channel=BenO%27Brien
  */
 public class UserPostActivity extends AppCompatActivity {
 
@@ -186,6 +186,7 @@ public class UserPostActivity extends AppCompatActivity {
                                     placeName.getText().toString().trim(),
                                     nameFile,
                                     placeDescription.getText().toString().trim());
+                            // here is to set up the category as one child and have each post as unique id
                             mDatabaseReference.child(category.getSelectedItem().toString()).child(id).setValue(uploadImage);
                             finish();
                         }
