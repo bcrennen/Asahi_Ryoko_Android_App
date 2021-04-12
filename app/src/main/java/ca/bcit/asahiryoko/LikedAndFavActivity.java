@@ -72,6 +72,7 @@ public class LikedAndFavActivity extends AppCompatActivity {
 
         listview = findViewById(R.id.like_fav_post_list);
 
+        // Set up the bottom nav bar.
         BottomNavigationView bottomNavigationView = findViewById(R.id.navbar);
         bottomNavigationView.setSelectedItemId(R.id.home);
         bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
@@ -116,6 +117,14 @@ public class LikedAndFavActivity extends AppCompatActivity {
         });
     }
 
+    /**
+     * This method gets the data from the firestorm database and updates the Views.
+     * Reads the user's liked Posts and outputs it to an Listview.
+     *
+     * Some help was used because the ArrayList wasn't properly updated.
+     * SOURCE: https://stackoverflow.com/questions/50110780/list-not-updating-when-fetching-data-from-firebase-android
+     * @param post_data
+     */
     private void getLikedPostFromDatabase(GetPostArrayData post_data) {
 
         DocumentReference currentUserDB = db.collection("users").document(firebaseAuth.getUid());
@@ -144,6 +153,11 @@ public class LikedAndFavActivity extends AppCompatActivity {
 
     }
 
+    /**
+     * An interfaced used to help update the ArrayList.
+     * Same source as getLikedPostFromDatabase()
+     * Source: https://stackoverflow.com/questions/50110780/list-not-updating-when-fetching-data-from-firebase-android
+     */
     public interface GetPostArrayData {
         void dataLoaded(ArrayList<PostData> postDataList);
     }

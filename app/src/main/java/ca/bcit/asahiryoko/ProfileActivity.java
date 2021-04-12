@@ -129,6 +129,10 @@ public class ProfileActivity extends AppCompatActivity {
 
     }
 
+    /**
+     * This method is responsible for displaying the current user's information.
+     * The information is read from the database and written on Views.
+     */
     private void displayUserInfo() {
         DocumentReference docRef = db.collection("users").document(firebaseAuth.getCurrentUser().getUid());
 
@@ -178,7 +182,10 @@ public class ProfileActivity extends AppCompatActivity {
     }
 
 
-
+    /***
+     * This prompts the edit profile activity.
+     * This activity allows the user to make changes to their profile.
+     */
     private void startEdit() {
         Intent editActivity = new Intent(ProfileActivity.this, edit_profile_activity.class);
         startActivity(editActivity);

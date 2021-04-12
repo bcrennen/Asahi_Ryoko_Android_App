@@ -62,6 +62,13 @@ public class EditFieldDialog extends AppCompatDialogFragment {
         this.databaseField = databaseField.trim().toLowerCase();
     }
 
+    /**
+     * This method creates the pop up dialog to edit the profile username and bio.
+     * This method provides the dialog box with Save and Cancel buttons.
+     * After saving, it saves directly to the database.
+     * @param savedInstanceState
+     * @return
+     */
     @NonNull
     @Override
     public Dialog onCreateDialog(@Nullable Bundle savedInstanceState) {

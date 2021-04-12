@@ -164,7 +164,12 @@ public class edit_profile_activity extends AppCompatActivity {
         });
     }
 
-        private void realTimeUpdateDB() {
+    /***
+     * This method is responsible for downloading and saving an image from Storage to an ImageView.
+     * The user data stores the an address and Glide is used to download the image.
+     *
+     */
+    private void realTimeUpdateDB() {
         DocumentReference docRef = db.collection("users").document(firebaseAuth.getCurrentUser().getUid());
 
         docRef.addSnapshotListener(new EventListener<DocumentSnapshot>() {
@@ -180,6 +185,7 @@ public class edit_profile_activity extends AppCompatActivity {
                 if (snapshot != null && snapshot.exists()) {
                     Log.d(TAG, "Current data: " + snapshot.getData());
                     StorageReference storageImageLoc = storageRef.child(USER_IMAGE_FOLDER).child((String) snapshot.get("profilePicture"));
+
                     storageImageLoc.getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
                         @Override
                         public void onSuccess(Uri uri) {
@@ -194,19 +200,28 @@ public class edit_profile_activity extends AppCompatActivity {
         });
     }
 
+    /***
+     * This prompts the user to edit their user name with a Dialog menu.
+     */
     private void editUsername() {
         EditFieldDialog nameDialog = new EditFieldDialog(username, "username");
         nameDialog.show(getSupportFragmentManager(), "Enter your name");
 
     }
 
+    /***
+     * This prompt the user to edit their bio with a dialog.
+     */
     private void editBio() {
         EditFieldDialog nameDialog = new EditFieldDialog(bio, "bio");
         nameDialog.show(getSupportFragmentManager(), "Enter your bio description");
 
     }
 
-
+    /***
+     * This prompts the user to select a local image to be used as a
+     * profile picture.
+     */
     private void editProfilePicture() {
         int RESULT_LOAD_IMAGE = 1;
         Intent photoPickerIntent = new Intent(Intent.ACTION_PICK);
@@ -216,6 +231,13 @@ public class edit_profile_activity extends AppCompatActivity {
 
     }
 
+    /***
+     * When the user returns from their files, use the selected photo to save and display on
+     * their profile picture.
+     * @param requestCode
+     * @param resultCode
+     * @param data
+     */
     @Override
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         super.onActivityResult(requestCode, resultCode, data);

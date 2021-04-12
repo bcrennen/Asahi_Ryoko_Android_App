@@ -113,6 +113,12 @@ public class PostAdapter extends ArrayAdapter<PostData> {
         return convertView;
     }
 
+    /**
+     * When a user clicks on one of the Post <3 ,
+     * This method is called to save the post in their user data.
+     * The save post is later used to display Liked / Favorite Posts.
+     * @param post_id
+     */
     private void updateDatabase(PostData post_id) {
         // Get current user's data
         DocumentReference docRef = db.collection("users").document(firebaseAuth.getCurrentUser().getUid());
