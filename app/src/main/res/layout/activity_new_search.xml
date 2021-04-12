@@ -38,18 +38,43 @@
             android:background="#F8A1A1"
             android:tint="#000000"
             app:srcCompat="@drawable/ic_baseline_search_24"
-            android:layout_marginLeft="20dp"/>
+            android:layout_marginLeft="20dp"
+            android:layout_gravity="bottom"/>
+
 
     </LinearLayout>
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/resultList"
         android:layout_width="275dp"
-        android:layout_height="match_parent"
+        android:layout_height="535dp"
         android:layout_gravity="center_horizontal"
-        android:layout_marginTop="20dp">
+        android:layout_marginTop="20dp"
+        android:layout_weight="0.1">
 
     </androidx.recyclerview.widget.RecyclerView>
+
+
+    <androidx.coordinatorlayout.widget.CoordinatorLayout
+        android:id="@+id/container_layout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_weight="1">
+
+        <com.google.android.material.bottomnavigation.BottomNavigationView
+            android:id="@+id/navbar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_gravity="bottom"
+            app:itemBackground="@color/grey"
+            app:itemTextColor="@drawable/selector"
+            app:menu="@menu/nav_app" />
+
+    </androidx.coordinatorlayout.widget.CoordinatorLayout>
+
+
+
 
 
 </LinearLayout>
